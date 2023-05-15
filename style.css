@@ -21,18 +21,17 @@ body{
 
 #joke-rank{
     column-count: 2;
-    column-gap: 0px;
-    position:absolute;
+    column-gap: 100px;
+    text-align: center;
+
 }
 
 .accordion{
+    display: flex;
     font-size: 20px;
     border:none;
     background-color: beige;
     padding: 20px;
-    text-align: center;
-    margin-left: 100px;
-    margin-right:100px;
     /* get these aligned and centered so collapse appears below */
 }
 
@@ -45,4 +44,5 @@ body{
     display:none;
     overflow: hidden;
     background-color: aquamarine;
+    position:absolute;
   }
