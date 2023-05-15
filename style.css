@@ -1,8 +1,22 @@
 html{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
+.logo{
+    text-align: center;
+    font-size: 30px;
+}
+.joke-window{
+    background-color: maroon;
+}
+
 body{
-    background-color: lightsalmon;
+    background-image: linear-gradient(red, #ff4d00, orange,rgb(255, 196, 0), yellow, rgb(106, 255, 0), green,rgb(64, 224, 189), blue, rgb(149, 0, 255), violet,rgb(255, 0, 85), red);
     height: 100%;
 }
 
@@ -11,6 +25,9 @@ body{
     color: purple;
     border: none;
     border-radius: 1000px;
+    padding: 10px;
+    font-size:15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .like-dislike{
     background-color: yellow;
@@ -23,7 +40,8 @@ body{
     column-count: 2;
     column-gap: 100px;
     text-align: center;
-
+    margin-left: 80px;
+    margin-right:auto;
 }
 
 .accordion{

@@ -9,23 +9,20 @@
     <script defer src = "src/index.js"></script>
     <!-- logo and descriptor made of lame dad pun -->
     <div class="logo" id="logo">
-        <h1>Hi ___, I'm dad!</h1>
+        <h1 id="logo-name">Hi ___, I'm dad!</h1>
         <h2>A Dad Joke Generator</h2>
-    </div>
-
-    <div id="basic-instructions">
     </div>
 
     <!-- have a button that generates jokes with like dislike button -->
     <div class="joke-window">
-        <button id="joke-button">insert mega cringe pun about the button here</button>
-        <p id="dad-joke"></p>
+        <button id="joke-button">joke button</button>
+        <div id="dad-joke"></div>
     </div>
 
     <!-- top and bottom five ranking based on highest and lowest likes -->
     <!-- two side by side collapsible columns of content -->
     <div id="joke-rank" >
-        <button id="high-button" class="accordion">The High Five ✋</button>
+        <button id="high-button" class="accordion">Hall of Fame ✋</button>
         <ol id="top-five" type="1" class="collapsible">
             <li>1</li>
             <li>2</li>
@@ -34,7 +31,7 @@
             <li>5</li>
         </ol>
 
-        <button id="low-button" class="accordion">Bottom 5 pun 💩</button>
+        <button id="low-button" class="accordion">Hall of Shame 💩</button>
         <ol id="bottom-five" type="1" class="collapsible">
             <li>1</li>
             <li>2</li>
@@ -43,6 +40,9 @@
             <li>5</li>
         </ol>
         <!-- todo make lists collapsible -->
+    </div>
+    <div id="pull-my-finger">
+        <button>Pull my Finger 👈</button>
     </div>
 </body>
 </html>
