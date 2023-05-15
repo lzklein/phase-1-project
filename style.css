@@ -15,13 +15,14 @@ body{
 .like-dislike{
     background-color: yellow;
     border-radius: 1000000px;
-    border: none;
+    border-color: yellow;
 
 }
 
 #joke-rank{
     column-count: 2;
     column-gap: 0px;
+    position:absolute;
 }
 
 .accordion{
@@ -29,8 +30,10 @@ body{
     border:none;
     background-color: beige;
     padding: 20px;
-    margin-left: 80px;
-    margin-right: 80px;
+    text-align: center;
+    margin-left: 100px;
+    margin-right:100px;
+    /* get these aligned and centered so collapse appears below */
 }
 
 .accordion:hover{

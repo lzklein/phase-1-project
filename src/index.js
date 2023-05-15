@@ -55,7 +55,6 @@ jokeButton.addEventListener('click', function(){getJokeData()
 })
 
 
-
 //add to joke button eventlistener after display joke, create the like and dislike buttons and append to the joke
 //
 
