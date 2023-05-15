@@ -30,13 +30,14 @@ function likeDislike(){
     dislikeButton.textContent = '😐';
     // add event listners to like and dislike that save and change like values
 
+
     dadJoke.append(likeButton, dislikeButton);
 }
 
 // populate top and bottom 5 with jokes based on number of likes
 
 
-//make top and bottom 5 collapsible click is temp change to onmouseenter to toggle on and onmouseleave to toggle off for final
+//make top and bottom 5 collapsible click is temp change to mouseover to toggle on and mouseleave to toggle off for final
 topFive.addEventListener('click', function(){
     topFiveList.classList.toggle('active');
 })
