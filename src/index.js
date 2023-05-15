@@ -2,8 +2,7 @@
 
 const dadJoke = document.querySelector('#dad-joke');
 const jokeButton = document.querySelector('#joke-button');
-const topFive = document.querySelector('#high-five');
-const topFiveList = document.querySelector('#top-five');
+const accordion = document.querySelectorAll('.accordion');
 
 // get the data from the api
 function getJokeData(){
@@ -28,8 +27,7 @@ function likeDislike(){
     dislikeButton.classList='like-dislike';
     likeButton.textContent = '😂';
     dislikeButton.textContent = '😐';
-    // add event listners to like and dislike that save and change like values
-
+    // add event listeners to like and dislike that save and change like values
 
     dadJoke.append(likeButton, dislikeButton);
 }
@@ -38,9 +36,15 @@ function likeDislike(){
 
 
 //make top and bottom 5 collapsible click is temp change to mouseover to toggle on and mouseleave to toggle off for final
-topFive.addEventListener('click', function(){
-    topFiveList.classList.toggle('active');
-})
+accordion.forEach(button => button.addEventListener('mouseover', function(){
+    let content = this.nextElementSibling;
+    content.style.display = "block";
+}))
+
+accordion.forEach(button => button.addEventListener('mouseleave', function(){
+    let content = this.nextElementSibling;
+    content.style.display = "none";
+}))
 
 // have the joke button display a new joke
 jokeButton.addEventListener('click', function(){getJokeData()
@@ -62,4 +66,4 @@ jokeButton.addEventListener('click', function(){getJokeData()
 //PROPOSED CHANGE TO JOKE BUTTON:
 //button text: can I get a dad joke?
 //text appears: I don't know, caaaan you?
-//mouseover reagion: may I get a dad joke?
+//button changes: may I get a dad joke?

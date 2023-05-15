@@ -9,13 +9,14 @@ body{
 #joke-button{
     background-color: lightblue;
     color: purple;
-    border-color: lightblue;
+    border: none;
     border-radius: 1000px;
 }
 .like-dislike{
     background-color: yellow;
     border-radius: 1000000px;
-    border-color: yellow;
+    border: none;
+
 }
 
 #joke-rank{
@@ -23,11 +24,22 @@ body{
     column-gap: 0px;
 }
 
+.accordion{
+    font-size: 20px;
+    border:none;
+    background-color: beige;
+    padding: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.accordion:hover{
+    background-color: slateblue;
+}
+
 .collapsible {
     padding: 0 18px;
-    max-height: 0;
+    display:none;
     overflow: hidden;
-    background-color: #f1f1f1;
-    transition: max-height 0.2s ease-out;
-
+    background-color: aquamarine;
   }
