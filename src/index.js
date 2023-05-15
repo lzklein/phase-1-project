@@ -1,7 +1,9 @@
 // console.log(Math.floor(Math.random()*100))
 
 const dadJoke = document.querySelector('#dad-joke');
-const jokeButton = document.querySelector('#joke-button')
+const jokeButton = document.querySelector('#joke-button');
+const topFive = document.querySelector('#high-five');
+const topFiveList = document.querySelector('#top-five');
 
 // get the data from the api
 function getJokeData(){
@@ -34,6 +36,11 @@ function likeDislike(){
 // populate top and bottom 5 with jokes based on number of likes
 
 
+//make top and bottom 5 collapsible click is temp change to onmouseenter to toggle on and onmouseleave to toggle off for final
+topFive.addEventListener('click', function(){
+    topFiveList.classList.toggle('active');
+})
+
 // have the joke button display a new joke
 jokeButton.addEventListener('click', function(){getJokeData()
     .then(function(joke){
@@ -51,7 +58,7 @@ jokeButton.addEventListener('click', function(){getJokeData()
 //after like or dislike, then save a copy of joke object with like/dislike 
 //then post/patch copy to own db
 
-
+//PROPOSED CHANGE TO JOKE BUTTON:
 //button text: can I get a dad joke?
 //text appears: I don't know, caaaan you?
 //mouseover reagion: may I get a dad joke?
