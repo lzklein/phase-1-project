@@ -1,0 +1,19 @@
+html{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+    background-color: lightsalmon;
+    height: 100%;
+}
+
+#joke-button{
+    background-color: lightblue;
+    color: purple;
+    border-color: lightblue;
+    border-radius: 1000px;
+}
+.like-dislike{
+    background-color: yellow;
+    border-radius: 1000000px;
+    border-color: yellow;
+}

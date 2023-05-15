@@ -2,40 +2,45 @@
 <html lang="en">
 <head>
     <title>Are Ya Winning, Son?</title>
-    <link rel="stylesheet" type="style/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
 </head>
 <body>
     <script defer src = "src/index.js"></script>
+    <!-- logo and descriptor made of lame dad pun -->
     <div class="logo" id="logo">
-        <h1>Are Ya Winning, Son?</h1>
+        <h1>Hi ___, I'm dad!</h1>
         <h2>A Dad Joke Generator</h2>
     </div>
 
     <div id="basic-instructions">
     </div>
 
+    <!-- have a button that generates jokes with like dislike button -->
     <div class="joke-window">
         <button id="joke-button">insert mega cringe pun about the button here</button>
-        <p id="dad-joke">placeholder text for joke</p>
+        <p id="dad-joke"></p>
     </div>
 
+    <!-- top and bottom five ranking based on highest and lowest likes -->
     <div class="joke-rank">
-        <h2>The High Five</h4>
-        <div id="top-five">
-            <ol>1</ol>
-            <ol>2</ol>
-            <ol>3</ol>
-            <ol>4</ol>
-            <ol>5</ol>
-        </li>
+        <h2>The High Five ✋</h4>
+        <ol id="top-five" type="1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+
         <h2 >Bottom 5 pun</h4>
-        <div id="bottom-five">
-            <ol>1</ol>
-            <ol>2</ol>
-            <ol>3</ol>
-            <ol>4</ol>
-            <ol>5</ol>
-        </div>
+        <ol id="bottom-five" type="1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
     </div>
 </body>
 </html>
