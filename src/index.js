@@ -22,7 +22,7 @@ function displayJoke(jokeData){
 }
 
 // attach a like and dislike button to joke
-function likeDislike(){
+function likeDislike(jokeData){
     const likeButton = document.createElement('button');
     const dislikeButton = document.createElement('button');
     likeButton.classList='like-dislike';
@@ -33,10 +33,22 @@ function likeDislike(){
     likeButton.addEventListener('click', function(){
         console.log("I like this")
         console.log(dadJoke.textContent[0])
+//      if(db.json has jokeData.id){
+//          patch like++
+//      }
+//      else{ const savedJoke = {joke: jokeData.joke, id: jokeData.id, url: jokeDada.url, likes:}
+//
+//  }
+
     })
     dislikeButton.addEventListener('click', function(){
         console.log("please stop")
         console.log(dadJoke.textContent[0])
+//      if(db.json has jokeData.id){
+//          patch like--
+//      }
+//      else{ const savedJoke = {joke: jokeData.joke, id: jokeData.id, url: jokeDada.url, likes:-1}
+//  }
     })
     dadJoke.append(likeButton, dislikeButton);
 }
@@ -65,7 +77,7 @@ finger.addEventListener('click', function(){
 jokeButton.addEventListener('click', function(){getJokeData()
     .then(function(joke){
         displayJoke(joke);
-        likeDislike();
+        likeDislike(joke);
     });
 })
 
