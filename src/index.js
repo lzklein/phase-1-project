@@ -18,6 +18,28 @@ function getJokeData(){
     .then(r => r.json())
 }
 
+function patchLikes(jokeObj){
+    fetch(`http://localhost:3000/dadjokes/${jokeObj.id}`, {
+        method: "PATCH",
+        headers: {
+            "content-type" : "application/json"},
+        body: JSON.stringify(jokeObj)
+    })
+}
+
+function getSavedJokes(){
+    return fetch('http://localhost:3000/dadjokes').then(r=>r.json());
+}
+
+function saveJokeInternal(jokeObject){
+    fetch('http://localhost:3000/dadjokes', {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"},
+        body: JSON.stringify(jokeObject)
+    })
+}
+
 // change joke display to new random joke
 function displayJoke(jokeData){
     dadJoke.textContent = jokeData.joke;
@@ -33,68 +55,67 @@ function likeDislike(jokeData){
     dislikeButton.textContent = `😐`;
 // add event listeners to like and dislike that save and change like values
     likeButton.addEventListener('click', function(){
-        // console.log("I like this")
-        // console.log(dadJoke.textContent[0])
-        // fetch dbjson.then r.json .then
-        const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
-        if (jokeExists) {
-            newJokesObject.forEach(jokeObj => {
-                if (jokeObj.id === jokeData.id) {
-                    jokeObj.likes++;
-                    console.log(jokeObj.likes);
-                    if(jokeObj.likes > 0){
-                        likeButton.textContent = `😂 ${jokeObj.likes}`;
+        getSavedJokes().then(function(newJokesObject){
+            const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
+            if (jokeExists) {
+                newJokesObject.forEach(jokeObj => {
+                    if (jokeObj.id === jokeData.id) {
+                        jokeObj.likes++;
+                        patchLikes(jokeObj);
+                        if(jokeObj.likes > 0){
+                            likeButton.textContent = `😂 ${jokeObj.likes}`;
+                        }
+                        else{
+                            dislikeButton.textContent = `😐 ${jokeObj.likes}`;
+                            likeButton.textContent = `😂 0`
+                        }
                     }
-                    else{
-                        dislikeButton.textContent = `😐 ${jokeObj.likes}`;
-                        likeButton.textContent = `😂 0`
-                    }
-                }
-            });
-        } 
-        else {
-            const newJoke = {
-                joke: jokeData.joke,
-                id: jokeData.id,
-                url: jokeData.url,
-                likes: 1
-            };
-            // console.log(newJoke.id);
-            likeButton.textContent = `😂 1`;
-            newJokesObject.push(newJoke);
-        }
+                });
+            } 
+            else {
+                const newJoke = {
+                    joke: jokeData.joke,
+                    id: jokeData.id,
+                    url: jokeData.url,
+                    likes: 1
+                };
+                // console.log(newJoke.id);
+                likeButton.textContent = `😂 1`;
+                saveJokeInternal(newJoke);
+            }
+        })
+
     })
     dislikeButton.addEventListener('click', function(){
-        // console.log("please stop")
-        // console.log(dadJoke.textContent[0])
-        const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
-        if(jokeExists){
-            newJokesObject.forEach(jokeObj =>{
-                if(jokeObj.id === jokeData.id){
-                    jokeObj.likes--;
-                    // console.log(jokeObj.likes);
-                    if(jokeObj.likes < 0){
-                        dislikeButton.textContent = `😐 ${jokeObj.likes}`;
+        getSavedJokes().then(function(newJokesObject){
+            const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
+            if(jokeExists){
+                newJokesObject.forEach(jokeObj =>{
+                    if(jokeObj.id === jokeData.id){
+                        jokeObj.likes--;
+                        patchLikes(jokeObj);
+                        if(jokeObj.likes < 0){
+                            dislikeButton.textContent = `😐 ${jokeObj.likes}`;
+                        }
+                        else{
+                            likeButton.textContent = `😂 ${jokeObj.likes}`;
+                            dislikeButton.textContent = `😐 0`;
+                        }
                     }
-                    else{
-                        likeButton.textContent = `😂 ${jokeObj.likes}`;
-                        dislikeButton.textContent = `😐 0`;
-                    }
-                }
-            })
-        }
-        else{
-            const newJoke = {
-                joke: jokeData.joke,
-                id: jokeData.id,
-                url: jokeData.url,
-                likes: -1
+                })
             }
-            // console.log(newJoke.id);
-            dislikeButton.textContent = `😐 -1`;
-            newJokesObject.push(newJoke);
-        }
-
+            else{
+                const newJoke = {
+                    joke: jokeData.joke,
+                    id: jokeData.id,
+                    url: jokeData.url,
+                    likes: -1
+                }
+                // console.log(newJoke.id);
+                dislikeButton.textContent = `😐 -1`;
+                saveJokeInternal(newJoke);
+            }
+        })
     })
     dadJoke.append(likeButton, dislikeButton);
 }
@@ -102,14 +123,61 @@ function likeDislike(jokeData){
 // populate top and bottom 5 with jokes based on number of likes
 function topFiveList(listObject){
     //sort listObject
-    //document.QuerySelector("#top-one").textcontent = listObject[0].joke
-    //etc etc through [4].joke
+    listObject.sort((a,b) => a.likes - b.likes);
+    const topOne = document.querySelector('#top-one');
+    const topTwo = document.querySelector('#top-two');
+    const topThree = document.querySelector('#top-three');
+    const topFour = document.querySelector('#top-four');
+    const topFive = document.querySelector('#top-five');
+    if(listObject.length > 0){
+        topOne.textContent = `${listObject[listObject.length-1].joke}  😂 ${listObject[listObject.length-1].likes} 😂 ` 
+    }
+    if(listObject.length > 1){
+        topTwo.textContent = `${listObject[listObject.length-2].joke}  😂 ${listObject[listObject.length-2].likes} 😂 ` 
+    }
+    if(listObject.length > 2){
+        topThree.textContent = `${listObject[listObject.length-3].joke}  😂 ${listObject[listObject.length-3].likes} 😂 ` 
+    }
+    if(listObject.length > 3){
+        topFour.textContent = `${listObject[listObject.length-4].joke}  😂 ${listObject[listObject.length-4].likes} 😂 ` 
+    }
+    if(listObject.length > 4){
+        topFive.textContent = `${listObject[listObject.length-5].joke}  😂 ${listObject[listObject.length-5].likes} 😂 `
+    }
 }
 
+// const testButton = document.createElement('button');
+// testButton.textContent = 'test';
+// testButton.addEventListener('click', function(){
+//     topFiveList(newJokesObject);
+// }
+// )
+// jokeWindow.append(testButton);
+
+
+
 function bottomFiveList(listObject){    
-    //sort listObject
-    //document.QuerySelector("#bottom-one").textcontent = listObject(listObject.length -1].joke
-    //etc etc thru listObject[listObject.length -5].joke
+    listObject.sort((a,b) => a.likes - b.likes);
+    const bottomOne = document.querySelector('#bottom-one');
+    const bottomTwo = document.querySelector('#bottom-two');
+    const bottomThree = document.querySelector('#bottom-three');
+    const bottomFour = document.querySelector('#bottom-four');
+    const bottomFive = document.querySelector('#bottom-five');
+    if(listObject.length > 0){
+        bottomOne.textContent = `${listObject[0].joke}  😐 ${listObject[0].likes} 😐 ` 
+    }
+    if(listObject.length > 1){
+        bottomTwo.textContent = `${listObject[1].joke}  😐 ${listObject[1].likes} 😐 ` 
+    }
+    if(listObject.length > 2){
+        bottomThree.textContent = `${listObject[2].joke}  😐 ${listObject[2].likes} 😐 ` 
+    }
+    if(listObject.length > 3){
+        bottomFour.textContent = `${listObject[3].joke}  😐 ${listObject[3].likes} 😐 ` 
+    }
+    if(listObject.length > 4){
+        bottomFive.textContent = `${listObject[4].joke}  😐 ${listObject[4].likes} 😐 `
+    }
 }
 
 // fetch dbjson, sort data by like value, get jokeArray[0] through [4] and jokeArray[jokeArray.length -1] through jokeArray[jokeArrayk.length - 5]
@@ -117,12 +185,13 @@ function bottomFiveList(listObject){
 
 //make top and bottom 5 collapsible click is temp change to mouseover to toggle on and mouseleave to toggle off for final
 accordion.forEach(button => button.addEventListener('mouseover', function(){
-    // topFiveList(newJokesObject);
+    getSavedJokes().then(data => topFiveList(data));
     let content = this.nextElementSibling;
     content.style.display = "block";
 }))
 
 accordion.forEach(button => button.addEventListener('mouseleave', function(){
+    getSavedJokes().then(data => bottomFiveList(data));
     let content = this.nextElementSibling;
     content.style.display = "none";
 }))
