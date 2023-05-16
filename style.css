@@ -11,15 +11,15 @@ html{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     font-size: 30px;
-    background-color: darkgray;
+    background-color: rgb(129, 244, 255);
 }
 .joke-window{
-    background-color: beige;
+    background-color: rgb(236, 253, 255);
 }
 
 body{
     /* background-image: linear-gradient(red, #ff4d00, orange, yellow, rgb(106, 255, 0), rgb(0, 255, 204),rgb(64, 165, 224), rgb(51, 0, 255), rgb(191, 0, 255), rgb(238, 130, 225), rgb(255, 0, 85), red); */
-    background-color: beige;
+    background-color: rgb(236, 253, 255);
     height: 100%;
 }
 
@@ -35,7 +35,7 @@ body{
 .like-dislike{
     background-color: yellow;
     border-radius: 1000000px;
-    border-color: beige;
+    border-color: rgb(236, 253, 255);
     margin: 5px;
 }
 #joke-rank{
@@ -54,13 +54,13 @@ body{
     /* get these aligned and centered so collapse appears below */
 }
 .accordion:hover{
-    background-color: rgb(255, 255, 123);
+    background-color: rgba(52, 98, 205, 0.514);
 }
 .collapsible {
     padding: 0 18px;
     display:none;
     overflow: hidden;
-    background-color: rgba(162, 160, 81, 0.785);
+    background-color: rgb(52, 98, 205);
     position:absolute;
     text-align:left;
 
