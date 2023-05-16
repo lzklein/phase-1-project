@@ -1,5 +1,5 @@
 html{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     text-shadow:
     -1px -1px 0 #000,
@@ -8,11 +8,13 @@ html{
     1px 1px 0 #000;
 }
 .logo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     font-size: 30px;
+    background-color: darkgray;
 }
 .joke-window{
-    background-color: maroon;
+    background-color: beige;
 }
 
 body{
@@ -23,7 +25,6 @@ body{
 
 #joke-button{
     background-image: linear-gradient(90deg, red, #ff4d00, orange, yellow, rgb(106, 255, 0), rgb(0, 255, 204),rgb(64, 165, 224), rgb(51, 0, 255), rgb(191, 0, 255), rgb(238, 130, 225), rgb(255, 0, 85), red);
-
     color: purple;
     border: none;
     border-radius: 1000px;
@@ -34,35 +35,38 @@ body{
 .like-dislike{
     background-color: yellow;
     border-radius: 1000000px;
-    border-color: yellow;
-
+    border-color: beige;
+    margin: 5px;
 }
-
 #joke-rank{
     column-count: 2;
-    column-gap: 100px;
+    column-gap: px;
     text-align: center;
-    margin-left: 80px;
-    margin-right:auto;
 }
-
 .accordion{
     display: flex;
+    text-align: center;
     font-size: 20px;
     border:none;
-    background-color: beige;
-    padding: 20px;
+    background-color: rgb(52, 98, 205);
+    padding: 25px;
+    width: 700px;
     /* get these aligned and centered so collapse appears below */
 }
-
 .accordion:hover{
-    background-color: slateblue;
+    background-color: rgb(255, 255, 123);
 }
-
 .collapsible {
     padding: 0 18px;
     display:none;
     overflow: hidden;
-    background-color: aquamarine;
+    background-color: rgba(162, 160, 81, 0.785);
     position:absolute;
-  }
+    text-align:left;
+
+}
+#pull-my-finger{
+    position:absolute;
+    bottom:0;
+    left:0;
+}

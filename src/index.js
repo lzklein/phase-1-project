@@ -1,12 +1,10 @@
-// console.log(Math.floor(Math.random()*100))
-
 const dadJoke = document.querySelector('#dad-joke');
 const jokeButton = document.querySelector('#joke-button');
 const accordion = document.querySelectorAll('.accordion');
 const jokeWindow = document.querySelector('.joke-window');
 const finger = document.querySelector('#pull-my-finger');
 
-const newJokesObject = [];
+// const newJokesObject = [];
 
 // get the data from the api
 function getJokeData(){
@@ -153,8 +151,6 @@ function topFiveList(listObject){
 // }
 // )
 // jokeWindow.append(testButton);
-
-
 
 function bottomFiveList(listObject){    
     listObject.sort((a,b) => a.likes - b.likes);

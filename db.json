@@ -1,5 +1,19 @@
 {
   "dadjokes": [
-
+    {
+      "joke": "This morning I was wondering where the sun was, but then it dawned on me.",
+      "id": "KJmrOKeNexc",
+      "likes": 1
+    },
+    {
+      "joke": "What did the late tomato say to the early tomato? I’ll ketch up",
+      "id": "5hVDAAIRKuc",
+      "likes": 2
+    },
+    {
+      "joke": "Two peanuts were walking down the street. One was a salted",
+      "id": "LBdUvcFB5h",
+      "likes": 0
+    }
   ]
 }
