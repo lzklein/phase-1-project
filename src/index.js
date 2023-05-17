@@ -6,9 +6,6 @@ const finger = document.querySelector('#pull-my-finger');
 const highButton = document.querySelector('#high-button');
 const lowButton = document.querySelector('#low-button');
 
-
-// const newJokesObject = [];
-
 // get the data from the api
 function getJokeData(){
     return fetch('https://icanhazdadjoke.com/', {
@@ -80,7 +77,6 @@ function likeDislike(jokeData){
                     url: jokeData.url,
                     likes: 1
                 };
-                // console.log(newJoke.id);
                 likeButton.textContent = `😂 1`;
                 saveJokeInternal(newJoke);
             }
@@ -112,7 +108,6 @@ function likeDislike(jokeData){
                     url: jokeData.url,
                     likes: -1
                 }
-                // console.log(newJoke.id);
                 dislikeButton.textContent = `😐 -1`;
                 saveJokeInternal(newJoke);
             }
