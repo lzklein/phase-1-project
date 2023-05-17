@@ -1,29 +1,34 @@
 {
   "dadjokes": [
     {
-      "joke": "This morning I was wondering where the sun was, but then it dawned on me.",
-      "id": "KJmrOKeNexc",
+      "joke": "Did you hear about the kidnapping at school? It's ok, he woke up.",
+      "id": "FImyA5EIBAd",
       "likes": 1
     },
     {
-      "joke": "What did the late tomato say to the early tomato? I’ll ketch up",
-      "id": "5hVDAAIRKuc",
+      "joke": "I’m only familiar with 25 letters in the English language. I don’t know why.",
+      "id": "1TfNRKexAd",
+      "likes": 4
+    },
+    {
+      "joke": "My new thesaurus is terrible. In fact, it's so bad, I'd say it's terrible.",
+      "id": "uszdNZ8MRCd",
       "likes": 2
     },
     {
-      "joke": "Two peanuts were walking down the street. One was a salted",
-      "id": "LBdUvcFB5h",
-      "likes": 0
+      "joke": "How much does a hipster weigh? An instagram.",
+      "id": "GlGBIY0wAAd",
+      "likes": 4
     },
     {
-      "joke": "Guy told me today he did not know what cloning is. I told him, \"that makes 2 of us.\"",
-      "id": "H6pWvHQKJe",
-      "likes": -1
+      "joke": "I was at the library and asked if they have any books on \"paranoia\", the librarian replied, \"yes, they are right behind you\"",
+      "id": "VvP7U0D5TCd",
+      "likes": -3
     },
     {
-      "joke": "Why was the strawberry sad? Its parents were in a jam.",
-      "id": "UfiGljVKusc",
-      "likes": 1
+      "joke": "It takes guts to be an organ donor.",
+      "id": "GYTCA5TKZvc",
+      "likes": 11
     }
   ]
 }
