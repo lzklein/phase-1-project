@@ -29,7 +29,8 @@ body{
 #joke-button{
     background-image: linear-gradient(90deg, red, #ff4d00, orange, yellow, rgb(106, 255, 0), rgb(0, 255, 204),rgb(64, 165, 224), rgb(51, 0, 255), rgb(191, 0, 255), rgb(238, 130, 225), rgb(255, 0, 85), red);
     color: purple;
-    border: none;
+    /* border: none; */
+    border-color: white;
     border-radius: 1000px;
     padding: 10px;
     font-size:15px;

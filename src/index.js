@@ -58,7 +58,10 @@ function likeDislike(jokeData){
             if (jokeExists) {
                 newJokesObject.forEach(jokeObj => {
                     if (jokeObj.id === jokeData.id) {
+                        //if e.target button id = #like-button
                         jokeObj.likes++;
+                        //else if button id = #dislike-button
+                        //jokeObj.like--;
                         patchLikes(jokeObj);
                         if(jokeObj.likes > 0){
                             likeButton.textContent = `😂 ${jokeObj.likes}`;
@@ -123,7 +126,6 @@ function topFiveList(listObject){
         document.querySelector(`#top-${i+1}`).textContent = `${listObject[i].joke}  😐 ${listObject[i].likes} 😐 ` 
     }
 }
-
 
 function bottomFiveList(listObject){    
     listObject.sort((a,b) => a.likes - b.likes);
