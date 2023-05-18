@@ -17,9 +17,12 @@ html{
 
 }
 .joke-window{
-    background-color: rgb(246, 254, 255);
+    background-color: rgb(202, 250, 255);
+    padding: 20px;
 }
-
+*{
+    box-sizing:inherit;
+}
 body{
     /* background-image: linear-gradient(red, #ff4d00, orange, yellow, rgb(106, 255, 0), rgb(0, 255, 204),rgb(64, 165, 224), rgb(51, 0, 255), rgb(191, 0, 255), rgb(238, 130, 225), rgb(255, 0, 85), red); */
     background-color: rgb(246, 254, 255);
@@ -28,13 +31,20 @@ body{
 
 #joke-button{
     background-image: linear-gradient(90deg, red, #ff4d00, orange, yellow, rgb(106, 255, 0), rgb(0, 255, 204),rgb(64, 165, 224), rgb(51, 0, 255), rgb(191, 0, 255), rgb(238, 130, 225), rgb(255, 0, 85), red);
-    color: purple;
+    color: white;
+
     /* border: none; */
     border-color: white;
     border-radius: 1000px;
     padding: 10px;
     font-size:15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+
 }
 .like-dislike{
     background-color: rgb(255, 255, 180);
@@ -45,7 +55,10 @@ body{
 #joke-rank{
     column-count: 2;
     column-gap: px;
-    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: center;
+
 }
 .accordion{
     display: flex;
@@ -61,12 +74,13 @@ body{
     background-color: rgb(77, 130, 255);
 }
 .collapsible {
-    padding: 0 18px;
+    padding: 0 25px;
     display:none;
     overflow: hidden;
     background-color: rgb(52, 98, 205);
     position:absolute;
     text-align:left;
+    justify-content: center;
 
 }
 #pull-my-finger{

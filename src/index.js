@@ -47,77 +47,85 @@ function displayJoke(jokeData){
 function likeDislike(jokeData){
     const likeButton = document.createElement('button');
     const dislikeButton = document.createElement('button');
-    likeButton.classList='like-dislike';
-    dislikeButton.classList='like-dislike';
-    likeButton.textContent = `😂`;
-    dislikeButton.textContent = `😐`;
+    likeButton.classList = 'like-dislike';
+    dislikeButton.classList = 'like-dislike';
+    likeButton.textContent = '😂';
+    dislikeButton.textContent = '😐';
 // add event listeners to like and dislike that save and change like values
-    likeButton.addEventListener('click', function(){
-        getSavedJokes().then(function(newJokesObject){
-            const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
-            if (jokeExists) {
-                newJokesObject.forEach(jokeObj => {
-                    if (jokeObj.id === jokeData.id) {
-                        //if e.target button id = #like-button
-                        jokeObj.likes++;
-                        //else if button id = #dislike-button
-                        //jokeObj.like--;
-                        patchLikes(jokeObj);
-                        if(jokeObj.likes > 0){
-                            likeButton.textContent = `😂 ${jokeObj.likes}`;
-                        }
-                        else{
-                            dislikeButton.textContent = `😐 ${jokeObj.likes}`;
-                            likeButton.textContent = `😂 0`
-                        }
-                    }
-                });
-            } 
-            else {
-                const newJoke = {
-                    joke: jokeData.joke,
-                    id: jokeData.id,
-                    url: jokeData.url,
-                    likes: 1
-                };
-                likeButton.textContent = `😂 1`;
-                saveJokeInternal(newJoke);
-            }
-        })
+    likeButton.addEventListener('click', () => likeClickEvent(jokeData, likeButton, dislikeButton));
+    dislikeButton.addEventListener('click', () => dislikeClickEvent(jokeData, likeButton, dislikeButton));
 
-    })
-    dislikeButton.addEventListener('click', function(){
-        getSavedJokes().then(function(newJokesObject){
-            const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
-            if(jokeExists){
-                newJokesObject.forEach(jokeObj =>{
-                    if(jokeObj.id === jokeData.id){
-                        jokeObj.likes--;
-                        patchLikes(jokeObj);
-                        if(jokeObj.likes < 0){
-                            dislikeButton.textContent = `😐 ${jokeObj.likes}`;
-                        }
-                        else{
-                            likeButton.textContent = `😂 ${jokeObj.likes}`;
-                            dislikeButton.textContent = `😐 0`;
-                        }
-                    }
-                })
-            }
-            else{
-                const newJoke = {
-                    joke: jokeData.joke,
-                    id: jokeData.id,
-                    url: jokeData.url,
-                    likes: -1
-                }
-                dislikeButton.textContent = `😐 -1`;
-                saveJokeInternal(newJoke);
-            }
-        })
-    })
     dadJoke.append(likeButton, dislikeButton);
 }
+
+//like button function
+function likeClickEvent(jokeData, likeButton, dislikeButton) {
+    getSavedJokes().then(newJokesObject => {
+        const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
+        if (jokeExists) {
+            newJokesObject.forEach(jokeObj => {
+                if (jokeObj.id === jokeData.id) {
+                    //if e.target button id = #like-button
+                    jokeObj.likes++;
+                    //else if button id = #dislike-button
+                    //jokeObj.like--;
+                    patchLikes(jokeObj);
+                    if(jokeObj.likes > 0){
+                        likeButton.textContent = `😂 ${jokeObj.likes}`;
+                    }
+                    else{
+                        dislikeButton.textContent = `😐 ${jokeObj.likes}`;
+                        likeButton.textContent = `😂 0`
+                    }
+                }
+            });
+        } 
+        else {
+            const newJoke = {
+                joke: jokeData.joke,
+                id: jokeData.id,
+                url: jokeData.url,
+                likes: 1
+            };
+            likeButton.textContent = `😂 1`;
+            saveJokeInternal(newJoke);
+        }
+    })
+}
+
+//dislike button function
+//could probably make tweaks to like button function and not have this. oh well.
+function dislikeClickEvent(jokeData, likeButton, dislikeButton) {
+    getSavedJokes().then(newJokesObject => {
+        const jokeExists = !!newJokesObject.find(jokeObj => jokeObj.id === jokeData.id);
+        if(jokeExists){
+            newJokesObject.forEach(jokeObj =>{
+                if(jokeObj.id === jokeData.id){
+                    jokeObj.likes--;
+                    patchLikes(jokeObj);
+                    if(jokeObj.likes < 0){
+                        dislikeButton.textContent = `😐 ${jokeObj.likes}`;
+                    }
+                    else{
+                        likeButton.textContent = `😂 ${jokeObj.likes}`;
+                        dislikeButton.textContent = `😐 0`;
+                    }
+                }
+            })
+        }
+        else{
+            const newJoke = {
+                joke: jokeData.joke,
+                id: jokeData.id,
+                url: jokeData.url,
+                likes: -1
+            }
+            dislikeButton.textContent = `😐 -1`;
+            saveJokeInternal(newJoke);
+        }
+    })
+}
+
 
 // populate top and bottom 5 with jokes based on number of likes
 function topFiveList(listObject){
@@ -164,14 +172,20 @@ finger.addEventListener('click', function(){
 })
 
 // have the joke button display a new joke
-jokeButton.addEventListener('click', function(){getJokeData()
-    .then(function(joke){
+jokeButton.addEventListener('click', function(){
+    getJokeData().then(function(joke){
         displayJoke(joke);
         likeDislike(joke);
     });
 })
 
+function initialJoke(){
+    getJokeData().then(joke=> {
+        displayJoke(joke)
+        likeDislike(joke)});
+}
 
+initialJoke();
 //for just generating jokes just fetch and display joke no need to persist
 //after like or dislike, then save a copy of joke object with like/dislike 
 //then post/patch copy to own db
