@@ -131,14 +131,18 @@ function dislikeClickEvent(jokeData, likeButton, dislikeButton) {
 function topFiveList(listObject){
     listObject.sort((a,b) => b.likes - a.likes);
     for(let i =0; i<5; i++){
-        document.querySelector(`#top-${i+1}`).textContent = `${listObject[i].joke}  😐 ${listObject[i].likes} 😐 ` 
+        if(listObject[i].likes >= 0){
+            document.querySelector(`#top-${i+1}`).textContent = `${listObject[i].joke}  😂 ${listObject[i].likes} 😂 ` 
+        }
     }
 }
 
 function bottomFiveList(listObject){    
     listObject.sort((a,b) => a.likes - b.likes);
     for(let i=0; i<5; i++){
-        document.querySelector(`#bottom-${i+1}`).textContent = `${listObject[i].joke}  😐 ${listObject[i].likes} 😐 ` 
+        if(listObject[i].likes <= 0){
+            document.querySelector(`#bottom-${i+1}`).textContent = `${listObject[i].joke}  😐 ${listObject[i].likes} 😐 ` 
+        }
     }
 }
 
