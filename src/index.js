@@ -5,6 +5,8 @@ const jokeWindow = document.querySelector('.joke-window');
 const finger = document.querySelector('#pull-my-finger');
 const highButton = document.querySelector('#high-button');
 const lowButton = document.querySelector('#low-button');
+const fart = document.createElement('audio');
+fart.src='fart.mp3';
 
 // get the data from the api
 function getJokeData(){
@@ -167,9 +169,6 @@ accordion.forEach(button => button.addEventListener('mouseleave', function(){
     let content = this.nextElementSibling;
     content.style.display = "none";
 }))
-
-const fart = document.createElement('audio');
-fart.src='fart.mp3';
 
 finger.addEventListener('click', function(){
     fart.play();
