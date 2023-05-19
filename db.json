@@ -1,5 +1,19 @@
 {
   "dadjokes": [
-    
+    {
+      "joke": "Did you hear about the cheese factory that exploded in France? There was nothing left but de Brie.",
+      "id": "SSCQCdi39Ed",
+      "likes": 1
+    },
+    {
+      "joke": "Why did the feline fail the lie detector test? Because he be lion.",
+      "id": "WvPZTvsWDd",
+      "likes": -1
+    },
+    {
+      "joke": "Two peanuts were walking down the street. One was a salted",
+      "id": "LBdUvcFB5h",
+      "likes": -3
+    }
   ]
 }
